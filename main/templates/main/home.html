@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- imp meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is an AI drivin webpage that detects and tells you the correct Yoga positions.">
+  <meta name="keywords" content="Yoga,Pose,Detection">
+  <meta name="author" content="...">
+  
+  <!-- style module links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/f16998d44c.js"></script>
+
+  <!-- css -->
+  <link rel="stylesheet" href="{% static 'main/css/car-1.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/car-2.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+  
+  <!-- Title of page -->
+  <title>Yoga Pose Detection</title>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  
+  
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-color sticky-top">
+    <div class="container align-items-center">
+      <a class="navbar-brand ms-md-3" href="#">
+        <img src="{% static  'main/images/logo.svg' %}" alt="Logo" width="130" height="40" class="d-inline-block align-text-top margin-from-left">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NSC" aria-controls="NSC" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="NSC">
+
+        <ul class="navbar-nav ms-auto me-md-3 align-items-center">
+          <li class="nav-item me-md-3">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item me-md-3">
+            <a class="nav-link" href="#b1">Aasanas</a>
+          </li>
+          <!-- <li class="nav-item me-md-3">
+            <a class="nav-link" href="#b2">Mudras</a>
+          </li> -->
+          <li class="nav-item me-md-3">
+            <a class="nav-link" href="#about">About us</a>
+          </li>
+          <li class="nav-item me-md-3">
+            <a class="nav-link" href="#contact">Contact us</a>
+          </li>
+          <li class="nav-item margin-from-right">
+            <button type="button" class="btn ctmBtn-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Get Demo
+            </button>          
+          </li>
+        </ul>
+      </div>
+    
+    <!-- nav cont end -->
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" 
+    data-bs-backdrop="static" data-bs-keyboard="false" 
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title mod-head" id="staticBackdropLabel">
+            Please fill in details to proceed
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" class="was-validated" action="#">
+            {% csrf_token %}
+
+            <div class="form-floating mb-3">
+              <input name="Name" type="text" class="form-control" id="floatingName" required placeholder="Enter Your Name">
+              <label for="floatingTrialName">Name</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <input name='Email' type="email" class="form-control" id="floatingInput" required placeholder="name@example.com">
+              <label for="floatingEmail-id">Email address</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <input name='Mobile' type="tel" class="form-control" id="floatingInput" required placeholder="+91-123456789" >
+              <label for="floatingMobile">Contact Number</label>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="submit" name='MainForm' class="btn ctmBtn-1 me-2">Proceed</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-danger alert-dismissible" role="alert" >
+        {{ message.message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+
+  <!-- landing -->
+  <div class="container " id="home">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-md-6 mt-5" >
+        <h1 class="post-title">
+          Perfect Guide for your Yoga Sessions 
+        </h1>
+        <p class='post-content mt-4'>
+          Strengthen Your Self-Training with ML based model to evaluate the correctness of your yoga postures.
+          Experience the benifits of our product by yourself! 
+        </p>
+
+        <button type="button" class="btn ctmBtn-1 me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Get Demo
+        </button>
+      
+        <button class='btn ctmBtn'>Watch a Video</button>
+      </div>
+      <div class="col-12 col-md-4 offset-md-1 mt-5 text-center">
+        <img src="{% static 'main/images/item-1.jpg' %}" alt="landing" class="img-responsive img-fluid" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- block-2 -->
+  <div class="container-fluid bg-ctm mt-5" >
+    <div class="row mt-5">
+      <div class="col-12 col-md-3 offset-md-1 mt-5 text-center">
+        <img src="{% static 'main/images/item-2-main.jpg' %}" alt="item-2-main.jpg" class="mt-4 mb-5 img-responsive img-fluid" />
+      </div>
+
+      <div class="col-12 col-md-6 offset-md-1 mt-5 mb-5">
+        <p class="post-title-2 mt-5" >
+          Empowering Yoga with the help of Technological Advancements 
+        </p>
+        <p class='post-content-2 mt-4'>
+          Technology has made our lives easier and for yoga,
+          it is all about getting the right balance and posture 
+          for that perfect experience technology helps in mind blowing ways.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- benefit of yoga -->
+  <div class="container" >
+    <div class="row">
+      <div class="col-12  align-items-center justify-content-center mt-5">
+        <h3 class='yoga-bf-head'>BENEFITS OF GOOD YOGA POSE</h3>
+      </div>
+
+      <!-- cards   -->
+      <div class="col-12">
+        <div class="row">
+          <div class="col-6 col-md-2 offset-md-2 mt-5 ">
+            <img src="{% static 'main/images/benefits/brain.svg' %}" alt="benefits/brain.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Overall Mental Health</p>
+          </div>
+
+          <div class="col-6 col-md-2 offset-md-1 mt-5">
+            <img src="{% static 'main/images/benefits/heart.svg' %}" alt="benefits/heart.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Reduced Risk Of Heart Disease</p>
+          </div>
+
+          <div class="col-6 col-md-2 offset-md-1 mt-5 ">
+            <img src="{% static 'main/images/benefits/kidney.svg' %}" alt="benefits/kidney.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Regulates Your Adrenal Glands</p>
+          </div>
+
+          <div class="col-6 col-md-2 offset-md-2 mt-5 ">
+            <img src="{% static 'main/images/benefits/liver.svg' %}" alt="benefits/liver.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Strong Immune System</p>
+          </div>
+
+          <div class="col-6 col-md-2 offset-md-1 mt-5 ">
+            <img src="{% static 'main/images/benefits/lungs.svg' %}" alt="benefits/lungs.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Better Respiration</p>
+          </div>
+
+          <div class="col-6 col-md-2 offset-md-1 mt-5 no-sh">
+            <img src="{% static 'main/images/benefits/bone.svg' %}" alt="benefits/bone.svg" class='no-sh img-fluid'>
+            <p class='yoga-item'>Improves Your Bone Health</p>
+          </div>
+
+        </div>
+      </div>
+    
+    
+    </div>
+  </div>
+
+
+  <!-- caresouls -->
+
+  <div class="container-fluid bg-ctm mt-5 align-items-center justify-content-center" id="b1" >
+    <div class="row">
+      <div class="col-12  align-items-center justify-content-center mt-5">
+        <h3 class='yoga-bf-head'>DIFFERENT YOGA POSES</h3>
+      </div>
+    </div>
+
+    <article class="car-main  align-items-center">
+      <div class="container car-body">
+        <div class="row car-container">
+          
+  
+          <input type="radio" name="slider" id="item-1" checked>
+          <input type="radio" name="slider" id="item-2">
+          <input type="radio" name="slider" id="item-3">
+          <input type="radio" name="slider" id="item-4">
+          <input type="radio" name="slider" id="item-5">
+    
+          <div class="cards">
+            <label class="card car-card" for="item-1" id="song-1">
+              <img class='car-img' src="{% static 'main/images/Asanas/pose.png' %}" alt="Asanas/pose.png">
+            </label>
+            <label class="card car-card" for="item-2" id="song-2">
+              <img class='car-img' src="{% static 'main/images/Asanas/Sukasana.jpg' %}" alt="Asanas/Sukasana.jpg">
+            </label>
+            <label class="card car-card" for="item-3" id="song-3">
+              <img class='car-img' src="{% static 'main/images/Asanas/Virabhadrasana II.jpg' %}" alt="Asanas/Virabhadrasana II.jpg">
+            </label>
+            <label class="card car-card" for="item-4" id="song-4">
+                <img class='car-img' src="{% static 'main/images/Asanas/virabhadrasana_1_1.jpg' %}" alt="Asanas/virabhadrasana_1_1.jpg">
+              </label>
+              <label class="card car-card" for="item-5" id="song-5">
+                <img  class='car-img' src="{% static 'main/images/Asanas/vriksasan.jpg' %}" alt="Asanas/vriksasan.jpg">
+              </label>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+
+
+    <!-- Mudras -->
+<!-- 
+    <div class="container-fluid mt-5 mb-5 align-items-center justify-content-center" id="b2" >
+      <div class="row">
+        <div class="col-12  align-items-center justify-content-center mt-5">
+          <h3 class='yoga-bf-head'>DIFFERENT MUDRAS</h3>
+        </div>
+      </div>
+  
+      <article class="car-main  align-items-center">
+        <div class="container car-body">
+          <div class="row car-container">
+            
+    
+            <input type="radio" name="slider" id="item-2-1" checked>
+            <input type="radio" name="slider" id="item-2-2">
+            <input type="radio" name="slider" id="item-2-3">
+            <input type="radio" name="slider" id="item-2-4">
+            <input type="radio" name="slider" id="item-2-5">
+      
+            <div class="cards">
+              <label class="card car-card" for="item-2-1" id="song-2-1">
+                <img class='car-img' src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+              </label>
+              <label class="card car-card" for="item-2-2" id="song-2-2">
+                <img class='car-img' src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+              </label>
+              <label class="card car-card" for="item-2-3" id="song-2-3">
+                <img class='car-img' src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+              </label>
+              <label class="card car-card" for="item-2-4" id="song-2-4">
+                  <img class='car-img' src="https://akm-img-a-in.tosshub.com/indiatoday/imagesstory/202009/woman-working-at-home-using-he_1200x768.jpeg?j19i2kjzUFznUg1TxnAnYkhFhSZyPo18&size=770:433" alt="song">
+                </label>
+                <label class="card car-card" for="item-2-5" id="song-2-5">
+                  <img  class='car-img' src="https://pilbox.themuse.com/image.jpg?filter=antialias&h=367&opt=1&pos=top-left&prog=1&q=keep&url=https%3A%2F%2Fcms-assets.themuse.com%2Fmedia%2Flead%2F9b60b15e-0144-4fa7-8483-3e30adc23425.jpg%3Fv%3D91b0cdd9da04527fd07cc85c378cfc2d0a5c7469&w=750" alt="song">
+                </label>
+            </div>
+      
+          </div>
+        </div>
+      </article>
+    
+    </div>
+    -->
+
+
+
+  <!-- team -->
+  <div class="container-fluid bg-ctm mb-5" id="about" >
+    <div class="row text-center">
+      <div class="col-12 text-center mt-5 mb-5">
+        <h3 class='yoga-bf-head'>MEET OUR TEAM</h3>
+      </div>
+
+
+      <div class="col-6 col-md-2 offset-md-2 mb-5" >
+        <div class='card'id="lead">
+          <div class='card-footer team-footer'>
+            <p class='member-name'>
+              Abhishek Sharma
+            </p>
+            <p class='member-position'>
+              Project Lead
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-2 offset-md-1 mb-5" >
+        <div class='card'id="design">
+          <div class='card-footer team-footer'>
+            <p class='member-name'>
+              Yash Agarwal
+            </p>
+            <p class='member-position'>
+              Data Science 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-2 offset-md-1 mb-5" >
+        <div class='card'id="design">
+          <div class='card-footer team-footer'>
+            <p class='member-name'>
+              Yash Shah
+            </p>
+            <p class='member-position'>
+              Data Science
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2 offset-md-2 mb-5" >
+        <div class='card'>
+          <img src="{% static 'main/images/team/Manav-2.jpg' %}" alt="team/Manav-2.jpg" class="img-responsive img-fluid "   />
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-2 offset-md-1 mb-5">
+        <div class='card'>
+          <img src="{% static 'main/images/team/Bharat-2.jpg' %}" 
+          alt="team/Bharat-2.jpg" class="img-fluid img-responsive"   />
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-2 offset-md-1 mb-5">
+        <div class='card'>
+          <img src="{% static 'main/images/team/Naman-2.jpg' %}" 
+          alt="team/Naman-2.jpg" class='img-fluid img-responsive' />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- contact us -->
+  <div class="container" id="contact">
+    <div class="row">
+      <div class="col-12 mt-5 mb-5">
+        <h3 class='yoga-bf-head'>Contact Us</h3>
+      </div>
+      
+      <div class="col-12 col-md-3 offset-md-1">
+        <img src="{% static 'main/images/undraw_contact_us_15o2 1.jpg' %}"
+        alt="undraw_contact_us_15o2 1.jpg" class='img-fluid' />
+      </div>
+
+      <div class="col-12 col-md-6 offset-md-1">
+        
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-floating mb-3">
+            <input name="name" type="text" class="form-control"  placeholder="Enter Your Name">
+            <label >Name</label>
+          </div>
+          
+          <div class="form-floating mb-3">
+            <input name="email" type="email" class="form-control"  placeholder="name@example.com">
+            <label >Email address</label>
+          </div>
+          
+          <div class="form-floating mb-3">
+            <textarea name="comment" class="form-control" placeholder="Leave a comment here"  style="height: 100px"></textarea>
+            <label >Comments</label>
+          </div>
+          <button type="submit" name='ContactForm'  class="btn btn-lg ctmBtn-1">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- footer -->
+  <div class="container-fluid bg-ctm mt-3">
+    <div class="row mt-5">
+      <div class="col-12 text-center text-muted mt-5 mb-5">
+        &copy;Yoga Pose Detection 
+      </div>
+    </div>
+  </div>
+  
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <script src="{% static 'main/js/Smooth.js' %}"></script>
+  
+  <noscript>
+    This page requires javascript.
+  </noscript>
+</body>
+</html>
