@@ -57,18 +57,20 @@
           <h1 class='mt-5 text-secondary mb-5'>
             Demo : Yoga Pose Detection
           </h1>
-          <form action="#" method="post">
+          <form action="#" method="post" class='text-center'>
             {% csrf_token %}
-            <button class='btn btn-success btn-lg p-2 m-2' type='submit' name='start' >
+            <button class='btn btn ctmBtn-1 me-2' type='submit' name='start' >
               Start Demo
             </button>
-            <button class='btn btn-lg btn-outline-danger p-2 m-2' type='submit' name='stop' >
+            <button class='btn ctmBtn' type='submit' name='stop' >
               Stop Demo
             </button>
           </form>
 
-          <section class='text-muted mt-5'>
-            <b>Note</b> : You can use this demo once. 
+          <section class='text-muted mt-5 text-center'>
+            <div class='mt-5'>
+              <b>Note</b> : You can use this demo once. 
+            </div>
           </section>
         </div>
       </div>

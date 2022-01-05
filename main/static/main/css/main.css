@@ -127,3 +127,10 @@
   border: none!important;
   box-shadow : none!important;
 }
+.ctm_card_bg{
+  background:#2D768C;
+  padding: 0.75rem!important;
+}
+.card-img-top{
+  height: 15rem !important;
+}
