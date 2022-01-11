@@ -18,3 +18,4 @@ Django , opencv-python , numpy , pandas ,sklearn , mediapipe
 The aim for this project is to implement a real-time predication model in web.
 We had a model that predicts the yoga pose peformed by the user and detect it's correctness and feedbacks the user with the information.
 
+random messages.
